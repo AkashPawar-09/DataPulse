@@ -18,12 +18,64 @@ Try the app online: [https://datapulse-web.streamlit.app/](https://datapulse-web
 
 | Feature | Description |
 | ------- | ----------- |
-| **CSV Input** | Upload files, paste URLs, or load sample data |
-| **Data Dashboard** | Rows, columns, missing values, duplicates, summary statistics, KPI cards |
-| **Interactive Charts** | Bar, histogram, line, and scatter plots powered by Plotly |
-| **Automatic Insights** | Plain-English observations generated from your data |
+| **CSV Input** | `Upload files` , `paste URLs` or `load sample data` |
+| **Data Dashboard** | `Rows` , `columns` , `missing values` , `duplicates` , `summary statistics` , `KPI cards` |
+| **Interactive Charts** | `Bar` , `histogram` , `line` and `scatter plots powered by Plotly` |
+| **Automatic Insights** | `Plain-English observations generated from your data` |
 | **Anomaly Detection** | Isolation Forest (Scikit-learn) to flag unusual rows |
-| **Downloads** | Export cleaned CSV, anomaly results, and text analysis reports |
+| **Downloads** | `Export cleaned CSV` , `anomaly results` and `text analysis reports` |
+
+---
+
+# Why DataPulse
+
+Raw CSV files are usually messy: missing values, duplicate rows, and unusual records hide inside thousands of lines. DataPulse gives a quick, code-free way to inspect a dataset, clean it, and spot problems before any deeper analysis or machine learning work.
+
+* **Saves time :** a first-pass data quality check in seconds instead of writing Pandas scripts each time
+* **No coding required :** everything is point and click, so non-programmers can use it too
+* **Transparent :** insights come from statistics (Pandas, NumPy, Isolation Forest), and every cleaning step is listed to the user
+* **Free and private by design :** no paid APIs and no data sent to external AI services
+
+---
+
+# App Walkthrough
+
+| Page | What it does |
+| ---- | ------------ |
+| **Load Data** | Upload a CSV, paste a URL, or use the sample dataset. Shows a preview with the row and column count. |
+| **Dashboard** | Shows rows, columns, missing values, and duplicate rows, plus KPI cards, column types, a missing values table, and summary statistics. |
+| **Charts** | Interactive Plotly charts (histogram, bar chart, line, scatter). Pick the columns and chart type, and hover, zoom, or export the chart. |
+| **Insights** | Auto-generated plain-English observations: missing value share, duplicates, most common values, widest-spread column, and strong correlations. |
+| **Anomaly Detection** | Select numeric columns, set the expected anomaly proportion, and run Isolation Forest. Results show flagged rows and the full dataset with an Anomaly flag. |
+| **Downloads** | Download the cleaned CSV (duplicates removed, missing numeric values filled with the median, with every action listed), a text analysis report, or the original CSV. |
+
+---
+
+# #Use Cases
+
+* **Data cleaning before analysis:** find and fix missing values and duplicates quickly
+* **Exploratory data analysis (EDA):** understand distributions, categories, and correlations at a glance
+* **Outlier and error spotting:** catch unusual spikes, extreme values, and suspicious records
+* **Quick reporting:** export a cleaned dataset and a summary report to share
+* **Learning and teaching:** students can see how statistics and Isolation Forest behave on real data
+
+---
+
+# #Applications
+
+DataPulse works on any tabular CSV, so it fits many industries:
+
+| Industry | Example Use |
+| -------- | ----------- |
+| **Healthcare** | Hospital operations: unusual admission spikes, extreme stay lengths, abnormal costs |
+| **Banking and Finance** | Transactions: unusually large or frequent transactions and high fraud scores |
+| **E-commerce** | Orders: flash-sale spikes, high return rates, delivery delays |
+| **Business and HR** | Company data: department performance, revenue and cost outliers |
+| **Agriculture** | Plant disease severity and crop yield records |
+| **Manufacturing** | Production lines: defect counts, downtime, and quality scores |
+| **Education** | Student performance and attendance records |
+
+Note: anomalies are statistical outliers. They are not necessarily errors or fraud, so always interpret the results in context.
 
 ---
 
