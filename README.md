@@ -1,4 +1,4 @@
-# 📊 DataPulse — Intelligent CSV Analytics
+# DataPulse â€” Intelligent CSV Analytics
 
 A beginner-friendly, professional data analytics dashboard built with Python and Streamlit. Upload any CSV file and instantly get interactive charts, automatic insights, anomaly detection, and downloadable reports.
 
@@ -8,7 +8,7 @@ A beginner-friendly, professional data analytics dashboard built with Python and
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
@@ -21,34 +21,34 @@ A beginner-friendly, professional data analytics dashboard built with Python and
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Python** — core language
-- **Streamlit** — web interface
-- **Pandas & NumPy** — data analysis
-- **Plotly** — interactive charts
-- **Scikit-learn** — machine learning (anomaly detection)
+- **Python** â€” core language
+- **Streamlit** â€” web interface
+- **Pandas & NumPy** â€” data analysis
+- **Plotly** â€” interactive charts
+- **Scikit-learn** â€” machine learning (anomaly detection)
 
-No database, no paid APIs, no external AI — everything runs locally or on Streamlit Community Cloud.
+No database, no paid APIs, no external AI â€” everything runs locally or on Streamlit Community Cloud.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
-```
+```text
 DataPulse/
-├── app.py                  # Streamlit UI and dashboard
-├── analyzer.py             # Analysis engine (Pandas, NumPy, Scikit-learn)
-├── requirements.txt        # Python dependencies
-├── README.md               # This file
-├── .gitignore              # Git ignore rules
-└── data/
-    └── sample_sales.csv    # Sample dataset for testing
+â”œâ”€â”€ app.py                  # Streamlit UI and dashboard
+â”œâ”€â”€ analyzer.py             # Analysis engine (Pandas, NumPy, Scikit-learn)
+â”œâ”€â”€ requirements.txt        # Python dependencies
+â”œâ”€â”€ README.md               # This file
+â”œâ”€â”€ .gitignore              # Git ignore rules
+â””â”€â”€ data/
+    â””â”€â”€ sample_sales.csv    # Sample dataset for testing
 ```
 
 ---
 
-## 🚀 Quick Start (Local)
+## Quick Start (Local)
 
 ### 1. Clone the repository
 
@@ -60,12 +60,14 @@ cd DataPulse
 ### 2. Create a virtual environment
 
 **Windows (PowerShell):**
+
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
 **macOS/Linux:**
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
@@ -87,19 +89,19 @@ The app will open in your browser at `http://localhost:8501`.
 
 ---
 
-## 🧪 How to Test
+## How to Test
 
-1. **Load Data** — Click "Load Sample Dataset" or upload your own CSV.
-2. **Dashboard** — Navigate to 📋 Dashboard and verify KPI cards, stats, and column types.
-3. **Charts** — Navigate to 📈 Charts, try each chart type, and change columns.
-4. **Insights** — Navigate to 💡 Insights and review auto-generated observations.
-5. **Anomaly Detection** — Navigate to 🤖 Anomaly Detection, select columns, and run the model.
-6. **Downloads** — Navigate to 📥 Downloads and test CSV + report downloads.
-7. **Error Handling** — Try uploading a non-CSV file, an empty file, or a broken URL.
+1. **Load Data** â€” Click "Load Sample Dataset" or upload your own CSV.
+2. **Dashboard** â€” Navigate to Dashboard and verify KPI cards, stats, and column types.
+3. **Charts** â€” Navigate to Charts, try each chart type, and change columns.
+4. **Insights** â€” Navigate to Insights and review auto-generated observations.
+5. **Anomaly Detection** â€” Navigate to Anomaly Detection, select columns, and run the model.
+6. **Downloads** â€” Navigate to Downloads and test CSV and report downloads.
+7. **Error Handling** â€” Try uploading a non-CSV file, an empty file, or a broken URL.
 
 ---
 
-## ☁️ Deploy to Streamlit Community Cloud (Free)
+## Deploy to Streamlit Community Cloud (Free)
 
 ### Step 1: Push to GitHub
 
@@ -114,33 +116,32 @@ git push -u origin main
 
 ### Step 2: Deploy
 
-1. Go to [share.streamlit.io](https://share.streamlit.io/).
+1. Go to [Streamlit Community Cloud](https://share.streamlit.io/).
 2. Sign in with your GitHub account.
-3. Click **"New app"**.
+3. Click **New app**.
 4. Select your repository (`DataPulse`), branch (`main`), and main file (`app.py`).
-5. Click **"Deploy"**.
+5. Click **Deploy**.
 
 Your app will be live at `https://YOUR_USERNAME-datapulse-app.streamlit.app` within a few minutes.
 
 ---
 
-## 📝 Key Design Decisions
+## Key Design Decisions
 
-- **Modular architecture** — `analyzer.py` handles all logic; `app.py` handles the UI. Easy to test and extend.
-- **No external AI** — All insights come from Pandas/NumPy statistical analysis, not GPT or other APIs.
-- **Graceful error handling** — Invalid files, broken URLs, empty datasets, and missing columns are all handled with clear messages.
-- **Beginner-friendly code** — Functions are well-named, docstrings explain parameters, and comments clarify non-obvious logic.
-- **Dark theme** — Professional look with minimal custom CSS that works on Streamlit Community Cloud.
+- **Modular architecture** â€” `analyzer.py` handles all logic; `app.py` handles the UI. Easy to test and extend.
+- **No external AI** â€” All insights come from Pandas/NumPy statistical analysis, not GPT or other APIs.
+- **Graceful error handling** â€” Invalid files, broken URLs, empty datasets, and missing columns are handled with clear messages.
+- **Beginner-friendly code** â€” Functions are well-named, docstrings explain parameters, and comments clarify non-obvious logic.
+- **Dark theme** â€” Professional look with minimal custom CSS that works on Streamlit Community Cloud.
 
 ---
 
-## 📄 License
+## License
 
-MIT License — feel free to use, modify, and share.
+MIT License â€” feel free to use, modify, and share.
 
 ---
 
 <p align="center">
-  Built with ❤️ using Python and Streamlit
+  Built using Python and Streamlit
 </p>
-

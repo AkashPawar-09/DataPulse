@@ -1,11 +1,11 @@
 """
-analyzer.py — DataPulse Analysis Engine
+analyzer.py â€” DataPulse Analysis Engine
 ========================================
 Contains all data analysis, insight generation, cleaning, and anomaly detection
 logic. Uses Pandas, NumPy, and Scikit-learn. No external AI APIs.
 
 This module is imported by app.py and provides pure functions that take
-DataFrames in and return results out — making it easy to test and understand.
+DataFrames in and return results out â€” making it easy to test and understand.
 """
 
 import pandas as pd
@@ -34,7 +34,7 @@ def load_csv_file(uploaded_file):
     try:
         df = pd.read_csv(uploaded_file)
         if df.empty:
-            return None, "The uploaded file is empty — it has no rows."
+            return None, "The uploaded file is empty â€” it has no rows."
         return df, None
     except pd.errors.EmptyDataError:
         return None, "The file appears to be empty or has no parseable data."
@@ -181,15 +181,15 @@ def detect_kpis(df: pd.DataFrame) -> list[dict]:
 
     # Patterns to look for: (search_term, display_label, aggregation, icon)
     patterns = [
-        ("revenue",   "Total Revenue",    "sum",  "💰"),
-        ("profit",    "Total Profit",     "sum",  "📈"),
-        ("cost",      "Total Cost",       "sum",  "💸"),
-        ("sales",     "Total Sales",      "sum",  "🛒"),
-        ("units sold","Total Units Sold", "sum",  "📦"),
-        ("unit sold", "Total Units Sold", "sum",  "📦"),
-        ("quantity",  "Total Quantity",   "sum",  "📦"),
-        ("rating",    "Avg Rating",       "mean", "⭐"),
-        ("price",     "Avg Price",        "mean", "🏷️"),
+        ("revenue",   "Total Revenue",    "sum",  ""),
+        ("profit",    "Total Profit",     "sum",  ""),
+        ("cost",      "Total Cost",       "sum",  ""),
+        ("sales",     "Total Sales",      "sum",  ""),
+        ("units sold","Total Units Sold", "sum",  ""),
+        ("unit sold", "Total Units Sold", "sum",  ""),
+        ("quantity",  "Total Quantity",   "sum",  ""),
+        ("rating",    "Avg Rating",       "mean", "â­"),
+        ("price",     "Avg Price",        "mean", ""),
     ]
 
     seen_labels = set()
@@ -233,7 +233,7 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
         worst_col = max(overview["missing_by_col"], key=overview["missing_by_col"].get)
         worst_pct = round(overview["missing_by_col"][worst_col] / overview["rows"] * 100, 1)
         insights.append(
-            f"📋 The dataset has {overview['missing_total']} missing values "
+            f" The dataset has {overview['missing_total']} missing values "
             f"({pct}% of all cells). The column **{worst_col}** has the most "
             f"gaps ({worst_pct}% missing)."
         )
@@ -241,7 +241,7 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
     # --- Duplicates ---
     if overview["duplicate_rows"] > 0:
         insights.append(
-            f"🔁 Found **{overview['duplicate_rows']}** duplicate row(s). "
+            f" Found **{overview['duplicate_rows']}** duplicate row(s). "
             f"Consider removing them for cleaner analysis."
         )
 
@@ -249,13 +249,13 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
     date_col = _find_date_column(df)
     for col in overview["categorical_cols"]:
         if col == date_col:
-            continue  # skip date columns — not useful as a category insight
+            continue  # skip date columns â€” not useful as a category insight
         counts = df[col].value_counts()
         if len(counts) >= 2:
             top = counts.index[0]
             top_pct = round(counts.iloc[0] / counts.sum() * 100, 1)
             insights.append(
-                f"🏆 In **{col}**, the most common value is **{top}** "
+                f" In **{col}**, the most common value is **{top}** "
                 f"({top_pct}% of entries)."
             )
             break  # only report the first suitable categorical column
@@ -273,7 +273,7 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
         if ranges:
             widest = max(ranges, key=ranges.get)
             insights.append(
-                f"📊 **{widest}** has the widest spread of values "
+                f" **{widest}** has the widest spread of values "
                 f"(min {df[widest].min():,.2f}, max {df[widest].max():,.2f})."
             )
 
@@ -286,7 +286,7 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
             top_cat = grouped.index[0]
             top_val = grouped.iloc[0]
             insights.append(
-                f"💰 **{top_cat}** leads in total **{revenue_col}** "
+                f" **{top_cat}** leads in total **{revenue_col}** "
                 f"with **{top_val:,.2f}**."
             )
 
@@ -306,7 +306,7 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
                 change_pct = round((second_half - first_half) / first_half * 100, 1)
                 direction = "increased" if change_pct > 0 else "decreased"
                 insights.append(
-                    f"📈 Average **{revenue_col}** {direction} by "
+                    f" Average **{revenue_col}** {direction} by "
                     f"**{abs(change_pct)}%** from the first half to the "
                     f"second half of the dataset."
                 )
@@ -328,7 +328,7 @@ def generate_insights(df: pd.DataFrame) -> list[str]:
                         actual = corr.loc[c1, c2]
                         direction = "positive" if actual > 0 else "negative"
                         insights.append(
-                            f"🔗 **{c1}** and **{c2}** have a strong "
+                            f" **{c1}** and **{c2}** have a strong "
                             f"{direction} correlation ({actual:.2f})."
                         )
                         break
@@ -405,7 +405,7 @@ def clean_data(df: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
             actions.append(f"Filled {missing} missing value(s) in '{col}' with 'Unknown'.")
 
     if not actions:
-        actions.append("No cleaning was needed — the dataset is already clean!")
+        actions.append("No cleaning was needed â€” the dataset is already clean!")
 
     return cleaned, actions
 
@@ -446,7 +446,7 @@ def detect_anomalies(df: pd.DataFrame, columns: list[str],
     subset = subset.dropna(how="all")
     if len(subset) < 10:
         return pd.DataFrame(), (
-            "Not enough data — need at least 10 rows with values in the "
+            "Not enough data â€” need at least 10 rows with values in the "
             "selected columns."
         )
 
@@ -471,7 +471,7 @@ def detect_anomalies(df: pd.DataFrame, columns: list[str],
     message = (
         f"Found **{anomaly_count}** unusual row(s) out of {len(result)} "
         f"({round(anomaly_count / len(result) * 100, 1)}%). "
-        f"Unusual values are statistical outliers — they are not necessarily "
+        f"Unusual values are statistical outliers â€” they are not necessarily "
         f"errors or fraud."
     )
 
@@ -489,7 +489,7 @@ def generate_report(df: pd.DataFrame, insights: list[str],
     """
     lines = [
         "=" * 60,
-        "  DataPulse — Dataset Analysis Report",
+        "  DataPulse â€” Dataset Analysis Report",
         "=" * 60,
         "",
         f"Rows              : {overview['rows']}",
@@ -529,7 +529,7 @@ def generate_report(df: pd.DataFrame, insights: list[str],
 
     lines.append("")
     lines.append("=" * 60)
-    lines.append("  Generated by DataPulse — Intelligent CSV Analytics")
+    lines.append("  Generated by DataPulse â€” Intelligent CSV Analytics")
     lines.append("=" * 60)
 
     return "\n".join(lines)
