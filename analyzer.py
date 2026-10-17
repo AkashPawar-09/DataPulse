@@ -188,7 +188,7 @@ def detect_kpis(df: pd.DataFrame) -> list[dict]:
         ("units sold","Total Units Sold", "sum",  ""),
         ("unit sold", "Total Units Sold", "sum",  ""),
         ("quantity",  "Total Quantity",   "sum",  ""),
-        ("rating",    "Avg Rating",       "mean", "â­"),
+        ("rating",    "Avg Rating",       "mean", ""),
         ("price",     "Avg Price",        "mean", ""),
     ]
 
